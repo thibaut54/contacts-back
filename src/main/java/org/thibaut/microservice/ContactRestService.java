@@ -25,11 +25,13 @@ public class ContactRestService {
 	}
 
 	@GetMapping("/findContacts")
-	public Page<Contact> findContacts(
-			@RequestParam(name = "nom", defaultValue = "") String nom,
+	public List<Contact> findContacts(
+			@RequestParam(name = "nom", defaultValue = "") String nom/*,
 			@RequestParam(name = "page", defaultValue = "0") int page,
-			@RequestParam(name = "size", defaultValue = "5") int size){
-		return contactRepository.chercherContact( "%"+nom+"%", PageRequest.of( page, size ) );
+			@RequestParam(name = "size", defaultValue = "5") int size*/){
+
+		List< Contact > contacts = contactRepository.chercherContact( "%" + nom + "%");
+		return contacts;
 	}
 
 	@GetMapping("/contacts/{id}")

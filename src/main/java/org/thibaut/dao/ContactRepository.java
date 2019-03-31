@@ -16,5 +16,5 @@ public interface ContactRepository extends JpaRepository< Contact, Long > {
 //	public Page<Contact> getContactsByNomContains(String nom);
 
 	@Query("select c from Contact c where c.nom like :n")
-	public Page<Contact> chercherContact( @Param( "n" ) String nom, Pageable pageable );
+	public List<Contact> chercherContact( @Param( "n" ) String nom);
 }
